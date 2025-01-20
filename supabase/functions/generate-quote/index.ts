@@ -18,6 +18,10 @@ serve(async (req) => {
     const { mood } = await req.json();
     console.log('Generating quote for mood:', mood);
 
+    if (!openAIApiKey) {
+      throw new Error('OpenAI API key is not configured');
+    }
+
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -25,7 +29,7 @@ serve(async (req) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4',
         messages: [
           { 
             role: 'system', 
