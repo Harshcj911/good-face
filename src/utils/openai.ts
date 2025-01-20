@@ -32,11 +32,19 @@ export const generateQuote = async (mood: string): Promise<{ quote: string; auth
       throw new Error('Invalid response format from OpenAI');
     }
 
-    const content = JSON.parse(data.choices[0].message.content);
-    return {
-      quote: content.quote || "Life is full of surprises and opportunities.",
-      author: content.author || "Anonymous"
-    };
+    try {
+      const content = JSON.parse(data.choices[0].message.content);
+      return {
+        quote: content.quote || "Life is full of surprises and opportunities.",
+        author: content.author || "Anonymous"
+      };
+    } catch (parseError) {
+      console.error('Error parsing OpenAI response:', parseError);
+      return {
+        quote: "Life is full of surprises and opportunities.",
+        author: "Anonymous"
+      };
+    }
   } catch (error) {
     console.error('Error generating quote:', error);
     return {
