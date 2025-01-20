@@ -9,7 +9,7 @@ export const generateQuote = async (mood: string): Promise<{ quote: string; auth
         'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-3.5-turbo',
         messages: [
           {
             role: 'user',
@@ -20,9 +20,23 @@ export const generateQuote = async (mood: string): Promise<{ quote: string; auth
       }),
     });
 
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('OpenAI API Error:', errorData);
+      throw new Error(`OpenAI API error: ${errorData.error?.message || 'Unknown error'}`);
+    }
+
     const data = await response.json();
+    
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      throw new Error('Invalid response format from OpenAI');
+    }
+
     const content = JSON.parse(data.choices[0].message.content);
-    return content;
+    return {
+      quote: content.quote || "Life is full of surprises and opportunities.",
+      author: content.author || "Anonymous"
+    };
   } catch (error) {
     console.error('Error generating quote:', error);
     return {
