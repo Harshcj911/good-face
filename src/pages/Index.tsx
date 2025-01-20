@@ -1,58 +1,67 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Mood } from "@/components/MoodSelector";
 import MoodSelector from "@/components/MoodSelector";
 import QuoteCard from "@/components/QuoteCard";
+import DateDisplay from "@/components/DateDisplay";
 import { useToast } from "@/components/ui/use-toast";
-
-const quotes = {
-  happy: [
-    { quote: "Happiness is not something ready made. It comes from your own actions.", author: "Dalai Lama" },
-    { quote: "The most wasted of all days is one without laughter.", author: "E.E. Cummings" },
-  ],
-  energetic: [
-    { quote: "Energy and persistence conquer all things.", author: "Benjamin Franklin" },
-    { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
-  ],
-  calm: [
-    { quote: "Peace comes from within. Do not seek it without.", author: "Buddha" },
-    { quote: "The calm mind brings inner strength and self-confidence.", author: "Dalai Lama" },
-  ],
-  reflective: [
-    { quote: "Life is not measured by the number of breaths we take, but by the moments that take our breath away.", author: "Maya Angelou" },
-    { quote: "The unexamined life is not worth living.", author: "Socrates" },
-  ],
-};
+import { generateQuote } from "@/utils/openai";
 
 const Index = () => {
   const [selectedMood, setSelectedMood] = useState<Mood>();
+  const [quote, setQuote] = useState<{ quote: string; author: string } | null>(null);
+  const [clickCount, setClickCount] = useState(0);
   const { toast } = useToast();
 
-  const handleMoodSelect = (mood: Mood) => {
-    setSelectedMood(mood);
-    toast({
-      title: "Mood Selected",
-      description: `Here's a quote to match your ${mood} mood.`,
-    });
-  };
+  useEffect(() => {
+    // Load click count from localStorage on component mount
+    const todayKey = new Date().toISOString().split('T')[0];
+    const savedCount = localStorage.getItem(`clickCount_${todayKey}`);
+    if (savedCount) {
+      setClickCount(parseInt(savedCount, 10));
+    }
+  }, []);
 
-  const getRandomQuote = (mood: Mood) => {
-    const moodQuotes = quotes[mood];
-    const randomIndex = Math.floor(Math.random() * moodQuotes.length);
-    return moodQuotes[randomIndex];
+  const handleMoodSelect = async (mood: Mood) => {
+    setSelectedMood(mood);
+    
+    try {
+      // Generate new quote
+      const newQuote = await generateQuote(mood);
+      setQuote(newQuote);
+
+      // Update click count
+      const todayKey = new Date().toISOString().split('T')[0];
+      const newCount = clickCount + 1;
+      setClickCount(newCount);
+      localStorage.setItem(`clickCount_${todayKey}`, newCount.toString());
+
+      toast({
+        title: "Mood Selected",
+        description: `Here's a quote to match your ${mood} mood.`,
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to generate a quote. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
     <main className={`min-h-screen mood-gradient ${selectedMood ? `mood-${selectedMood}` : "bg-gradient-to-br from-gray-100 to-gray-200"}`}>
       <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12">
+        <DateDisplay clickCount={clickCount} />
+        
         <h1 className="text-4xl md:text-5xl font-bold text-center">
           How are you feeling today?
         </h1>
         
         <MoodSelector onMoodSelect={handleMoodSelect} selectedMood={selectedMood} />
         
-        {selectedMood && (
+        {quote && (
           <div className="animate-fadeIn">
-            <QuoteCard {...getRandomQuote(selectedMood)} />
+            <QuoteCard quote={quote.quote} author={quote.author} />
           </div>
         )}
       </div>
