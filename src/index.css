@@ -6,25 +6,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 199 89% 48%;
-    --primary-foreground: 199 89% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-    --destructive: 0 84.2% 60.2%;
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 199 89% 48%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
     --radius: 0.75rem;
   }
 }
@@ -43,17 +43,25 @@
 }
 
 .mood-happy {
-  @apply bg-gradient-to-br from-yellow-100 to-yellow-300;
+  @apply bg-gradient-to-br from-yellow-700 to-yellow-900;
 }
 
 .mood-calm {
-  @apply bg-gradient-to-br from-sky-100 to-sky-300;
+  @apply bg-gradient-to-br from-sky-700 to-sky-900;
 }
 
 .mood-energetic {
-  @apply bg-gradient-to-br from-green-100 to-green-300;
+  @apply bg-gradient-to-br from-green-700 to-green-900;
 }
 
 .mood-reflective {
-  @apply bg-gradient-to-br from-purple-100 to-purple-300;
+  @apply bg-gradient-to-br from-purple-700 to-purple-900;
+}
+
+.mood-sad {
+  @apply bg-gradient-to-br from-blue-700 to-blue-900;
+}
+
+.mood-stressed {
+  @apply bg-gradient-to-br from-red-700 to-red-900;
 }

@@ -10,14 +10,21 @@ const Index = () => {
   const [selectedMood, setSelectedMood] = useState<Mood>();
   const [quote, setQuote] = useState<{ quote: string; author: string } | null>(null);
   const [clickCount, setClickCount] = useState(0);
+  const [moodCounts, setMoodCounts] = useState<Record<Mood, number>>({
+    happy: 0,
+    energetic: 0,
+    calm: 0,
+    reflective: 0,
+    sad: 0,
+    stressed: 0,
+  });
   const { toast } = useToast();
 
   useEffect(() => {
-    // Load click count from localStorage on component mount
     const todayKey = new Date().toISOString().split('T')[0];
-    const savedCount = localStorage.getItem(`clickCount_${todayKey}`);
-    if (savedCount) {
-      setClickCount(parseInt(savedCount, 10));
+    const savedCounts = localStorage.getItem(`moodCounts_${todayKey}`);
+    if (savedCounts) {
+      setMoodCounts(JSON.parse(savedCounts));
     }
   }, []);
 
@@ -25,15 +32,17 @@ const Index = () => {
     setSelectedMood(mood);
     
     try {
-      // Generate new quote
       const newQuote = await generateQuote(mood);
       setQuote(newQuote);
 
-      // Update click count
+      // Update mood counts
       const todayKey = new Date().toISOString().split('T')[0];
-      const newCount = clickCount + 1;
-      setClickCount(newCount);
-      localStorage.setItem(`clickCount_${todayKey}`, newCount.toString());
+      const newMoodCounts = {
+        ...moodCounts,
+        [mood]: moodCounts[mood] + 1
+      };
+      setMoodCounts(newMoodCounts);
+      localStorage.setItem(`moodCounts_${todayKey}`, JSON.stringify(newMoodCounts));
 
       toast({
         title: "Mood Selected",
@@ -49,15 +58,19 @@ const Index = () => {
   };
 
   return (
-    <main className={`min-h-screen mood-gradient ${selectedMood ? `mood-${selectedMood}` : "bg-gradient-to-br from-gray-100 to-gray-200"}`}>
+    <main className={`min-h-screen mood-gradient ${selectedMood ? `mood-${selectedMood}` : "bg-gradient-to-br from-gray-800 to-gray-900"}`}>
       <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12">
-        <DateDisplay clickCount={clickCount} />
+        <DateDisplay clickCount={Object.values(moodCounts).reduce((a, b) => a + b, 0)} />
         
-        <h1 className="text-4xl md:text-5xl font-bold text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-center text-white">
           How are you feeling today?
         </h1>
         
-        <MoodSelector onMoodSelect={handleMoodSelect} selectedMood={selectedMood} />
+        <MoodSelector 
+          onMoodSelect={handleMoodSelect} 
+          selectedMood={selectedMood} 
+          moodCounts={moodCounts}
+        />
         
         {quote && (
           <div className="animate-fadeIn">
