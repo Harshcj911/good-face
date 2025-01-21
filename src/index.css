@@ -43,49 +43,25 @@
 }
 
 .mood-happy {
-  @apply bg-gradient-to-br from-yellow-400 to-yellow-600;
+  @apply bg-gradient-to-br from-yellow-700 to-yellow-900;
 }
 
 .mood-calm {
-  @apply bg-gradient-to-br from-sky-400 to-sky-600;
+  @apply bg-gradient-to-br from-sky-700 to-sky-900;
 }
 
 .mood-energetic {
-  @apply bg-gradient-to-br from-green-400 to-green-600;
+  @apply bg-gradient-to-br from-green-700 to-green-900;
 }
 
 .mood-reflective {
-  @apply bg-gradient-to-br from-purple-400 to-purple-600;
+  @apply bg-gradient-to-br from-purple-700 to-purple-900;
 }
 
 .mood-sad {
-  @apply bg-gradient-to-br from-blue-400 to-blue-600;
+  @apply bg-gradient-to-br from-blue-700 to-blue-900;
 }
 
 .mood-stressed {
-  @apply bg-gradient-to-br from-red-400 to-red-600;
-}
-
-@keyframes scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-scale-in {
-  animation: scale-in 0.3s ease-out forwards;
-}
-
-.animate-fade-in {
-  @apply opacity-0;
-  animation: fadeIn 0.5s ease-in forwards;
-}
-
-.delay-100 {
-  animation-delay: 100ms;
+  @apply bg-gradient-to-br from-red-700 to-red-900;
 }
