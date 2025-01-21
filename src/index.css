@@ -65,3 +65,27 @@
 .mood-stressed {
   @apply bg-gradient-to-br from-red-700 to-red-900;
 }
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
+}
+
+.animate-fade-in {
+  @apply opacity-0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
