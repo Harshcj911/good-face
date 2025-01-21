@@ -80,7 +80,7 @@ const Index = () => {
   };
 
   return (
-    <main className={`min-h-screen mood-gradient ${selectedMood ? `mood-${selectedMood}` : "bg-gradient-to-br from-gray-800 to-gray-900"}`}>
+    <div className={`min-h-screen w-full ${selectedMood ? `mood-${selectedMood}` : "bg-gradient-to-br from-gray-800 to-gray-900"}`}>
       <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12">
         <div className="animate-fade-in">
           <DateDisplay clickCount={Object.values(moodCounts).reduce((a, b) => a + b, 0)} />
@@ -104,7 +104,7 @@ const Index = () => {
           </div>
         )}
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -43,27 +43,27 @@
 }
 
 .mood-happy {
-  @apply bg-gradient-to-br from-yellow-700 to-yellow-900;
+  @apply bg-gradient-to-br from-yellow-400 to-yellow-600;
 }
 
 .mood-calm {
-  @apply bg-gradient-to-br from-sky-700 to-sky-900;
+  @apply bg-gradient-to-br from-sky-400 to-sky-600;
 }
 
 .mood-energetic {
-  @apply bg-gradient-to-br from-green-700 to-green-900;
+  @apply bg-gradient-to-br from-green-400 to-green-600;
 }
 
 .mood-reflective {
-  @apply bg-gradient-to-br from-purple-700 to-purple-900;
+  @apply bg-gradient-to-br from-purple-400 to-purple-600;
 }
 
 .mood-sad {
-  @apply bg-gradient-to-br from-blue-700 to-blue-900;
+  @apply bg-gradient-to-br from-blue-400 to-blue-600;
 }
 
 .mood-stressed {
-  @apply bg-gradient-to-br from-red-700 to-red-900;
+  @apply bg-gradient-to-br from-red-400 to-red-600;
 }
 
 @keyframes scale-in {
