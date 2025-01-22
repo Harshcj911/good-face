@@ -64,7 +64,7 @@ serve(async (req) => {
       console.error('Error parsing Gemini response:', parseError);
       return new Response(
         JSON.stringify({
-          quote: "Life is full of surprises and opportunities.",
+          quote: "Sorry no quotes further, try again later.",
           author: "Anonymous"
         }), 
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
