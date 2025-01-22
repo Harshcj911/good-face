@@ -6,13 +6,36 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-    --card: 222 47% 11%;
+    --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
+    --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
+    --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -24,8 +47,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
-    --radius: 0.5rem;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
@@ -39,39 +61,39 @@
   }
 }
 
-/* Updated neo-brutalism mood styles with better text contrast */
+/* Dark mode aware mood styles */
 .mood-gradient {
   @apply transition-colors duration-300;
   will-change: background-color;
 }
 
 .mood-happy {
-  @apply bg-mood-happy-bg text-mood-happy-text font-bold;
+  @apply bg-mood-happy-light-bg text-mood-happy-light-text font-bold dark:bg-mood-happy-dark-bg dark:text-mood-happy-dark-text;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-calm {
-  @apply bg-mood-calm-bg text-mood-calm-text font-bold;
+  @apply bg-mood-calm-light-bg text-mood-calm-light-text font-bold dark:bg-mood-calm-dark-bg dark:text-mood-calm-dark-text;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-energetic {
-  @apply bg-mood-energetic-bg text-mood-energetic-text font-bold;
+  @apply bg-mood-energetic-light-bg text-mood-energetic-light-text font-bold dark:bg-mood-energetic-dark-bg dark:text-mood-energetic-dark-text;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-reflective {
-  @apply bg-mood-reflective-bg text-mood-reflective-text font-bold;
+  @apply bg-mood-reflective-light-bg text-mood-reflective-light-text font-bold dark:bg-mood-reflective-dark-bg dark:text-mood-reflective-dark-text;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-sad {
-  @apply bg-mood-sad-bg text-mood-sad-text font-bold;
+  @apply bg-mood-sad-light-bg text-mood-sad-light-text font-bold dark:bg-mood-sad-dark-bg dark:text-mood-sad-dark-text;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-stressed {
-  @apply bg-mood-stressed-bg text-mood-stressed-text font-bold;
+  @apply bg-mood-stressed-light-bg text-mood-stressed-light-text font-bold dark:bg-mood-stressed-dark-bg dark:text-mood-stressed-dark-text;
   box-shadow: 5px 5px 0px #000000;
 }
 

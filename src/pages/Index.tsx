@@ -3,6 +3,7 @@ import type { Mood } from "@/components/MoodSelector";
 import MoodSelector from "@/components/MoodSelector";
 import QuoteCard from "@/components/QuoteCard";
 import DateDisplay from "@/components/DateDisplay";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { useToast } from "@/components/ui/use-toast";
 import { generateQuote } from "@/utils/openai";
 
@@ -35,7 +36,6 @@ const Index = () => {
       const newQuote = await generateQuote(mood);
       setQuote(newQuote);
 
-      // Update mood counts
       const todayKey = new Date().toISOString().split('T')[0];
       const newMoodCounts = {
         ...moodCounts,
@@ -58,11 +58,15 @@ const Index = () => {
   };
 
   return (
-    <main className={`min-h-screen mood-gradient ${selectedMood ? `mood-${selectedMood}` : "bg-gradient-to-br from-gray-800 to-gray-900"}`}>
+    <main className={`min-h-screen mood-gradient ${selectedMood ? `mood-${selectedMood}` : "bg-background"}`}>
       <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12">
+        <div className="w-full flex justify-end mb-4">
+          <ThemeToggle />
+        </div>
+        
         <DateDisplay clickCount={Object.values(moodCounts).reduce((a, b) => a + b, 0)} />
         
-        <h1 className="text-4xl md:text-5xl font-bold text-center text-white">
+        <h1 className="text-4xl md:text-5xl font-bold text-center text-foreground">
           How are you feeling today?
         </h1>
         
