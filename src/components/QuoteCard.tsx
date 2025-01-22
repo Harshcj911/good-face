@@ -10,8 +10,8 @@ interface QuoteCardProps {
 const QuoteCard = ({ quote, author, className }: QuoteCardProps) => {
   return (
     <Card className={cn(
-      "w-full max-w-lg bg-white/10 backdrop-blur-lg border border-white/20",
-      "hover:bg-white/20 transition-all duration-300",
+      "w-full max-w-lg bg-white neo-brutal",
+      "transition-transform duration-200",
       className
     )}>
       <CardContent className="pt-6">

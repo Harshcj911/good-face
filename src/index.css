@@ -25,7 +25,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
 }
 
@@ -35,37 +35,59 @@
   }
   body {
     @apply bg-background text-foreground font-inter antialiased;
+    text-rendering: optimizeLegibility;
   }
 }
 
+/* Neo-brutalism mood styles with performance optimizations */
 .mood-gradient {
-  @apply transition-all duration-700;
+  @apply transition-colors duration-300;
+  will-change: background-color;
 }
 
 .mood-happy {
-  @apply bg-gradient-to-br from-yellow-700/30 to-yellow-900/30 backdrop-blur-md;
+  @apply bg-mood-happy-bg text-mood-happy-text;
+  box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-calm {
-  @apply bg-gradient-to-br from-sky-700/30 to-sky-900/30 backdrop-blur-md;
+  @apply bg-mood-calm-bg text-mood-calm-text;
+  box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-energetic {
-  @apply bg-gradient-to-br from-green-700/30 to-green-900/30 backdrop-blur-md;
+  @apply bg-mood-energetic-bg text-mood-energetic-text;
+  box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-reflective {
-  @apply bg-gradient-to-br from-purple-700/30 to-purple-900/30 backdrop-blur-md;
+  @apply bg-mood-reflective-bg text-mood-reflective-text;
+  box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-sad {
-  @apply bg-gradient-to-br from-blue-700/30 to-blue-900/30 backdrop-blur-md;
+  @apply bg-mood-sad-bg text-mood-sad-text;
+  box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-stressed {
-  @apply bg-gradient-to-br from-red-700/30 to-red-900/30 backdrop-blur-md;
+  @apply bg-mood-stressed-bg text-mood-stressed-text;
+  box-shadow: 5px 5px 0px #000000;
 }
 
-.glass {
-  @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
+/* Neo-brutalism component styles */
+.neo-brutal {
+  @apply border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
+  transform: translate(0, 0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.neo-brutal:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+}
+
+.neo-brutal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
 }

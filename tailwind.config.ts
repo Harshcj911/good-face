@@ -8,6 +8,9 @@ export default {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
+  future: {
+    hoverOnlyWhenSupported: true, // Performance optimization for hover states
+  },
   prefix: "",
   theme: {
     container: {
@@ -22,6 +25,33 @@ export default {
         inter: ["Inter", "sans-serif"],
       },
       colors: {
+        // Neo-brutalism color palette for emotions
+        mood: {
+          happy: {
+            bg: "#F97316",
+            text: "#1A1F2C"
+          },
+          calm: {
+            bg: "#D3E4FD",
+            text: "#1A1F2C"
+          },
+          energetic: {
+            bg: "#8B5CF6",
+            text: "#FFFFFF"
+          },
+          reflective: {
+            bg: "#7E69AB",
+            text: "#FFFFFF"
+          },
+          sad: {
+            bg: "#1A1F2C",
+            text: "#FFFFFF"
+          },
+          stressed: {
+            bg: "#D946EF",
+            text: "#FFFFFF"
+          }
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -55,12 +85,12 @@ export default {
       },
       keyframes: {
         fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
-        fadeIn: "fadeIn 0.5s ease-in",
+        fadeIn: "fadeIn 0.3s ease-out forwards",
       },
     },
   },

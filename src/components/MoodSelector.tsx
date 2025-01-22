@@ -20,23 +20,20 @@ const moods = [
 
 const MoodSelector = ({ onMoodSelect, selectedMood, moodCounts }: MoodSelectorProps) => {
   return (
-    <div className="flex flex-wrap gap-4 justify-center">
+    <div className="flex flex-wrap gap-6 justify-center">
       {moods.map(({ type, icon: Icon, label }) => (
         <Button
           key={type}
-          variant={selectedMood === type ? "default" : "outline"}
+          variant="outline"
           className={`
-            flex flex-col gap-2 h-auto p-4 min-w-[100px] relative
-            ${selectedMood === type 
-              ? 'bg-white/20 backdrop-blur-lg hover:bg-white/30' 
-              : 'bg-white/10 backdrop-blur-lg hover:bg-white/20'}
-            transition-all duration-300 border border-white/20
+            flex flex-col gap-2 h-auto p-4 min-w-[120px] relative neo-brutal
+            ${selectedMood === type ? `bg-mood-${type}-bg text-mood-${type}-text` : 'bg-white text-black'}
           `}
           onClick={() => onMoodSelect(type)}
         >
           <Icon className="w-6 h-6" />
-          <span>{label}</span>
-          <span className="absolute -top-2 -right-2 bg-white/20 backdrop-blur-lg text-primary-foreground text-xs px-2 py-1 rounded-full">
+          <span className="font-bold">{label}</span>
+          <span className="absolute -top-2 -right-2 bg-black text-white text-xs px-2 py-1 rounded-full font-bold">
             {moodCounts[type]}
           </span>
         </Button>
