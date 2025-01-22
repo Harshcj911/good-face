@@ -39,45 +39,45 @@
   }
 }
 
-/* Neo-brutalism mood styles with performance optimizations */
+/* Updated neo-brutalism mood styles with better text contrast */
 .mood-gradient {
   @apply transition-colors duration-300;
   will-change: background-color;
 }
 
 .mood-happy {
-  @apply bg-mood-happy-bg text-mood-happy-text;
+  @apply bg-mood-happy-bg text-mood-happy-text font-bold;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-calm {
-  @apply bg-mood-calm-bg text-mood-calm-text;
+  @apply bg-mood-calm-bg text-mood-calm-text font-bold;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-energetic {
-  @apply bg-mood-energetic-bg text-mood-energetic-text;
+  @apply bg-mood-energetic-bg text-mood-energetic-text font-bold;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-reflective {
-  @apply bg-mood-reflective-bg text-mood-reflective-text;
+  @apply bg-mood-reflective-bg text-mood-reflective-text font-bold;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-sad {
-  @apply bg-mood-sad-bg text-mood-sad-text;
+  @apply bg-mood-sad-bg text-mood-sad-text font-bold;
   box-shadow: 5px 5px 0px #000000;
 }
 
 .mood-stressed {
-  @apply bg-mood-stressed-bg text-mood-stressed-text;
+  @apply bg-mood-stressed-bg text-mood-stressed-text font-bold;
   box-shadow: 5px 5px 0px #000000;
 }
 
-/* Neo-brutalism component styles */
+/* Enhanced neo-brutalism component styles */
 .neo-brutal {
-  @apply border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
+  @apply border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold;
   transform: translate(0, 0);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }

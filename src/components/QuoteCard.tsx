@@ -16,8 +16,8 @@ const QuoteCard = ({ quote, author, className }: QuoteCardProps) => {
     )}>
       <CardContent className="pt-6">
         <blockquote className="space-y-2">
-          <p className="text-lg font-medium leading-relaxed">{quote}</p>
-          <footer className="text-sm text-muted-foreground">— {author}</footer>
+          <p className="text-lg font-bold leading-relaxed text-black">{quote}</p>
+          <footer className="text-sm font-bold text-gray-700">— {author}</footer>
         </blockquote>
       </CardContent>
     </Card>

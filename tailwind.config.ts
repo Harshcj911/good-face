@@ -9,7 +9,7 @@ export default {
     "./src/**/*.{ts,tsx}",
   ],
   future: {
-    hoverOnlyWhenSupported: true, // Performance optimization for hover states
+    hoverOnlyWhenSupported: true,
   },
   prefix: "",
   theme: {
@@ -25,31 +25,30 @@ export default {
         inter: ["Inter", "sans-serif"],
       },
       colors: {
-        // Neo-brutalism color palette for emotions
         mood: {
           happy: {
             bg: "#F97316",
-            text: "#1A1F2C"
+            text: "#000000"  // Black text for better visibility on orange
           },
           calm: {
             bg: "#D3E4FD",
-            text: "#1A1F2C"
+            text: "#000000"  // Black text for better visibility on light blue
           },
           energetic: {
             bg: "#8B5CF6",
-            text: "#FFFFFF"
+            text: "#FFFFFF"  // White text for better visibility on purple
           },
           reflective: {
             bg: "#7E69AB",
-            text: "#FFFFFF"
+            text: "#FFFFFF"  // White text for better visibility on secondary purple
           },
           sad: {
             bg: "#1A1F2C",
-            text: "#FFFFFF"
+            text: "#FFFFFF"  // White text for better visibility on dark background
           },
           stressed: {
             bg: "#D946EF",
-            text: "#FFFFFF"
+            text: "#FFFFFF"  // White text for better visibility on magenta
           }
         },
         border: "hsl(var(--border))",
