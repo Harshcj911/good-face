@@ -1,7 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
+const geminiApiKey = Deno.env.get('GEMINI_API_KEY');
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -18,47 +18,50 @@ serve(async (req) => {
     const { mood } = await req.json();
     console.log('Generating quote for mood:', mood);
 
-    if (!openAIApiKey) {
-      throw new Error('OpenAI API key is not configured');
+    if (!geminiApiKey) {
+      throw new Error('Gemini API key is not configured');
     }
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${geminiApiKey}`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openAIApiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
-        messages: [
-          { 
-            role: 'system', 
-            content: 'You are a helpful assistant that generates inspiring quotes based on moods. Return quotes in JSON format with quote and author fields.'
-          },
-          { 
-            role: 'user', 
-            content: `Generate an inspiring quote about feeling ${mood}. Make it unique and meaningful.`
-          }
-        ],
+        contents: [{
+          parts: [{
+            text: `Generate an inspiring quote about feeling ${mood}. Return it in JSON format with quote and author fields. Make it unique and meaningful. The response should be in valid JSON format like this: {"quote": "Your quote here", "author": "Author Name"}`,
+          }]
+        }],
+        generationConfig: {
+          temperature: 0.7,
+          topK: 40,
+          topP: 0.95,
+          maxOutputTokens: 200,
+        },
       }),
     });
 
     if (!response.ok) {
       const error = await response.json();
-      console.error('OpenAI API Error:', error);
+      console.error('Gemini API Error:', error);
       throw new Error(error.error?.message || 'Failed to generate quote');
     }
 
     const data = await response.json();
-    console.log('OpenAI response:', data);
+    console.log('Gemini response:', data);
 
     try {
-      const content = JSON.parse(data.choices[0].message.content);
-      return new Response(JSON.stringify(content), {
+      // Extract the text content from Gemini's response
+      const textContent = data.candidates[0].content.parts[0].text;
+      // Parse the JSON string from the text content
+      const parsedContent = JSON.parse(textContent);
+      
+      return new Response(JSON.stringify(parsedContent), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     } catch (parseError) {
-      console.error('Error parsing OpenAI response:', parseError);
+      console.error('Error parsing Gemini response:', parseError);
       return new Response(
         JSON.stringify({
           quote: "Life is full of surprises and opportunities.",
