@@ -27,64 +27,28 @@ export default {
       colors: {
         mood: {
           happy: {
-            light: {
-              bg: "#F97316",
-              text: "#000000"
-            },
-            dark: {
-              bg: "#FF8534",
-              text: "#000000"
-            }
+            bg: "#F97316",
+            text: "#000000"  // Black text for better visibility on orange
           },
           calm: {
-            light: {
-              bg: "#D3E4FD",
-              text: "#000000"
-            },
-            dark: {
-              bg: "#90B8F8",
-              text: "#000000"
-            }
+            bg: "#D3E4FD",
+            text: "#000000"  // Black text for better visibility on light blue
           },
           energetic: {
-            light: {
-              bg: "#8B5CF6",
-              text: "#FFFFFF"
-            },
-            dark: {
-              bg: "#A78BFA",
-              text: "#000000"
-            }
+            bg: "#8B5CF6",
+            text: "#FFFFFF"  // White text for better visibility on purple
           },
           reflective: {
-            light: {
-              bg: "#7E69AB",
-              text: "#FFFFFF"
-            },
-            dark: {
-              bg: "#9F85D7",
-              text: "#000000"
-            }
+            bg: "#7E69AB",
+            text: "#FFFFFF"  // White text for better visibility on secondary purple
           },
           sad: {
-            light: {
-              bg: "#1A1F2C",
-              text: "#FFFFFF"
-            },
-            dark: {
-              bg: "#2D3748",
-              text: "#FFFFFF"
-            }
+            bg: "#1A1F2C",
+            text: "#FFFFFF"  // White text for better visibility on dark background
           },
           stressed: {
-            light: {
-              bg: "#D946EF",
-              text: "#FFFFFF"
-            },
-            dark: {
-              bg: "#E879F9",
-              text: "#000000"
-            }
+            bg: "#D946EF",
+            text: "#FFFFFF"  // White text for better visibility on magenta
           }
         },
         border: "hsl(var(--border))",
