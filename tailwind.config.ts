@@ -28,27 +28,27 @@ export default {
         mood: {
           happy: {
             bg: "#F97316",
-            text: "#000000"  // Black text for better visibility on orange
+            text: "#000000"
           },
           calm: {
             bg: "#D3E4FD",
-            text: "#000000"  // Black text for better visibility on light blue
+            text: "#000000"
           },
           energetic: {
             bg: "#8B5CF6",
-            text: "#FFFFFF"  // White text for better visibility on purple
+            text: "#FFFFFF"
           },
           reflective: {
             bg: "#7E69AB",
-            text: "#FFFFFF"  // White text for better visibility on secondary purple
+            text: "#FFFFFF"
           },
           sad: {
             bg: "#1A1F2C",
-            text: "#FFFFFF"  // White text for better visibility on dark background
+            text: "#FFFFFF"
           },
           stressed: {
             bg: "#D946EF",
-            text: "#FFFFFF"  // White text for better visibility on magenta
+            text: "#FFFFFF"
           }
         },
         border: "hsl(var(--border))",

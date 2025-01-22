@@ -10,14 +10,14 @@ interface QuoteCardProps {
 const QuoteCard = ({ quote, author, className }: QuoteCardProps) => {
   return (
     <Card className={cn(
-      "w-full max-w-lg bg-white neo-brutal",
-      "transition-transform duration-200",
+      "w-full max-w-lg bg-background neo-brutal",
+      "animate-fade-in transition-all duration-300",
       className
     )}>
       <CardContent className="pt-6">
         <blockquote className="space-y-2">
-          <p className="text-lg font-bold leading-relaxed text-black">{quote}</p>
-          <footer className="text-sm font-bold text-gray-700">— {author}</footer>
+          <p className="text-lg font-bold leading-relaxed text-foreground">{quote}</p>
+          <footer className="text-sm font-bold text-muted-foreground">— {author}</footer>
         </blockquote>
       </CardContent>
     </Card>

@@ -10,7 +10,7 @@ import { generateQuote } from "@/utils/openai";
 const Index = () => {
   const [selectedMood, setSelectedMood] = useState<Mood>();
   const [quote, setQuote] = useState<{ quote: string; author: string } | null>(null);
-  const [clickCount, setClickCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [moodCounts, setMoodCounts] = useState<Record<Mood, number>>({
     happy: 0,
     energetic: 0,
@@ -30,11 +30,15 @@ const Index = () => {
   }, []);
 
   const handleMoodSelect = async (mood: Mood) => {
+    if (isLoading) return;
+    
+    setIsLoading(true);
     setSelectedMood(mood);
     
     try {
       const newQuote = await generateQuote(mood);
-      setQuote(newQuote);
+      setQuote(null); // Reset quote to trigger animation
+      setTimeout(() => setQuote(newQuote), 100); // Add small delay for animation
 
       const todayKey = new Date().toISOString().split('T')[0];
       const newMoodCounts = {
@@ -54,11 +58,13 @@ const Index = () => {
         description: "Failed to generate a quote. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <main className={`min-h-screen mood-gradient ${selectedMood ? `mood-${selectedMood}` : "bg-background"}`}>
+    <main className={`min-h-screen transition-colors duration-300 ${selectedMood ? `mood-${selectedMood}` : "bg-background"}`}>
       <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12">
         <div className="w-full flex justify-end mb-4">
           <ThemeToggle />
@@ -66,7 +72,7 @@ const Index = () => {
         
         <DateDisplay clickCount={Object.values(moodCounts).reduce((a, b) => a + b, 0)} />
         
-        <h1 className="text-4xl md:text-5xl font-bold text-center text-foreground">
+        <h1 className="text-4xl md:text-5xl font-bold text-center text-foreground transition-colors duration-300">
           How are you feeling today?
         </h1>
         
@@ -74,10 +80,11 @@ const Index = () => {
           onMoodSelect={handleMoodSelect} 
           selectedMood={selectedMood} 
           moodCounts={moodCounts}
+          isLoading={isLoading}
         />
         
         {quote && (
-          <div className="animate-fadeIn">
+          <div className="w-full flex justify-center">
             <QuoteCard quote={quote.quote} author={quote.author} />
           </div>
         )}

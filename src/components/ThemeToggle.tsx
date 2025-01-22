@@ -8,15 +8,16 @@ export function ThemeToggle() {
   return (
     <Button
       variant="outline"
-      className="neo-brutal bg-white dark:bg-gray-800"
+      size="icon"
+      className="neo-brutal bg-background text-foreground transition-colors duration-200"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "dark" ? (
-        <Sun className="h-6 w-6" />
+        <Sun className="h-5 w-5 transition-all" />
       ) : (
-        <Moon className="h-6 w-6" />
+        <Moon className="h-5 w-5 transition-all" />
       )}
-      <span className="ml-2">{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+      <span className="sr-only">Toggle theme</span>
     </Button>
   );
 }
