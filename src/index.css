@@ -6,12 +6,12 @@
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 0%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 0%;
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
@@ -26,34 +26,9 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
-    --neo-bg: transparent;
-    --neo-shadow-dark: rgba(209, 209, 209, 0.7);
-    --neo-shadow-light: rgba(255, 255, 255, 0.7);
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --neo-bg: transparent;
-    --neo-shadow-dark: rgba(15, 15, 15, 0.7);
-    --neo-shadow-light: rgba(37, 37, 37, 0.7);
+    --neo-bg: #FFFFFF;
+    --neo-shadow-dark: rgba(209, 209, 209, 1);
+    --neo-shadow-light: rgba(255, 255, 255, 1);
   }
 }
 
@@ -62,8 +37,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-inter antialiased transition-colors duration-300;
-    background: transparent;
+    @apply bg-white text-foreground font-inter antialiased;
   }
   html {
     @apply overflow-x-hidden;
@@ -100,27 +74,27 @@
   }
 
   .mood-happy {
-    @apply bg-mood-happy-bg text-mood-happy-text font-bold dark:bg-mood-happy-dark-bg dark:text-mood-happy-dark-text neo-brutal;
+    @apply bg-mood-happy-bg text-mood-happy-text font-bold;
   }
 
   .mood-calm {
-    @apply bg-mood-calm-bg text-mood-calm-text font-bold dark:bg-mood-calm-dark-bg dark:text-mood-calm-dark-text neo-brutal;
+    @apply bg-mood-calm-bg text-mood-calm-text font-bold;
   }
 
   .mood-energetic {
-    @apply bg-mood-energetic-bg text-mood-energetic-text font-bold dark:bg-mood-energetic-dark-bg dark:text-mood-energetic-dark-text neo-brutal;
+    @apply bg-mood-energetic-bg text-mood-energetic-text font-bold;
   }
 
   .mood-reflective {
-    @apply bg-mood-reflective-bg text-mood-reflective-text font-bold dark:bg-mood-reflective-dark-bg dark:text-mood-reflective-dark-text neo-brutal;
+    @apply bg-mood-reflective-bg text-mood-reflective-text font-bold;
   }
 
   .mood-sad {
-    @apply bg-mood-sad-bg text-mood-sad-text font-bold dark:bg-mood-sad-dark-bg dark:text-mood-sad-dark-text neo-brutal;
+    @apply bg-mood-sad-bg text-mood-sad-text font-bold;
   }
 
   .mood-stressed {
-    @apply bg-mood-stressed-bg text-mood-stressed-text font-bold dark:bg-mood-stressed-dark-bg dark:text-mood-stressed-dark-text neo-brutal;
+    @apply bg-mood-stressed-bg text-mood-stressed-text font-bold;
   }
 }
 

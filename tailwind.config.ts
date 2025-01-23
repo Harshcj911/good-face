@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -27,59 +26,35 @@ export default {
       colors: {
         mood: {
           happy: {
-            bg: "#F97316",
-            text: "#000000",
-            dark: {
-              bg: "#C2590F",
-              text: "#FFFFFF"
-            }
+            bg: "#FEC6A1",
+            text: "#000000"
           },
           calm: {
             bg: "#D3E4FD",
-            text: "#000000",
-            dark: {
-              bg: "#2563EB",
-              text: "#FFFFFF"
-            }
+            text: "#000000"
           },
           energetic: {
-            bg: "#8B5CF6",
-            text: "#FFFFFF",
-            dark: {
-              bg: "#6D28D9",
-              text: "#FFFFFF"
-            }
+            bg: "#E5DEFF",
+            text: "#000000"
           },
           reflective: {
-            bg: "#7E69AB",
-            text: "#FFFFFF",
-            dark: {
-              bg: "#5B4B7A",
-              text: "#FFFFFF"
-            }
+            bg: "#F1F0FB",
+            text: "#000000"
           },
           sad: {
-            bg: "#1A1F2C",
-            text: "#FFFFFF",
-            dark: {
-              bg: "#0F1219",
-              text: "#FFFFFF"
-            }
+            bg: "#FFDEE2",
+            text: "#000000"
           },
           stressed: {
-            bg: "#D946EF",
-            text: "#FFFFFF",
-            dark: {
-              bg: "#A21CAF",
-              text: "#FFFFFF"
-            }
+            bg: "#FDE1D3",
+            text: "#000000"
           }
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "#FFFFFF",
+        foreground: "#000000",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
