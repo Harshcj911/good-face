@@ -13,6 +13,7 @@ const QuoteCard = ({ quote, author, className }: QuoteCardProps) => {
       className={cn(
         "w-full max-w-lg backdrop-blur-sm neo-brutal",
         "animate-fade-in transition-all duration-500",
+        "bg-opacity-20 dark:bg-opacity-10",
         className
       )}
     >

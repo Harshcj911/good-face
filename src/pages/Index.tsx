@@ -37,8 +37,8 @@ const Index = () => {
     
     try {
       const newQuote = await generateQuote(mood);
-      setQuote(null); // Reset quote to trigger animation
-      setTimeout(() => setQuote(newQuote), 100); // Add small delay for animation
+      setQuote(null);
+      setTimeout(() => setQuote(newQuote), 100);
 
       const todayKey = new Date().toISOString().split('T')[0];
       const newMoodCounts = {
@@ -64,8 +64,8 @@ const Index = () => {
   };
 
   return (
-    <main className={`min-h-screen transition-colors duration-300 ${selectedMood ? `mood-${selectedMood}` : "bg-background"}`}>
-      <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12">
+    <main className="min-h-screen transition-colors duration-300">
+      <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12 backdrop-blur-sm">
         <div className="w-full flex justify-end mb-4">
           <ThemeToggle />
         </div>
