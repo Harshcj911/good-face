@@ -28,8 +28,8 @@ const MoodSelector = ({ onMoodSelect, selectedMood, moodCounts, isLoading }: Moo
           variant="outline"
           className={`
             flex flex-col gap-2 h-auto p-4 min-w-[120px] relative neo-brutal
-            transition-colors duration-300
-            ${selectedMood === type ? `mood-${type}` : 'bg-background text-foreground'}
+            transition-all duration-300
+            ${selectedMood === type ? `mood-${type}` : 'bg-background text-foreground hover:bg-background/90'}
             ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}
           `}
           onClick={() => !isLoading && onMoodSelect(type)}
@@ -37,7 +37,7 @@ const MoodSelector = ({ onMoodSelect, selectedMood, moodCounts, isLoading }: Moo
         >
           <Icon className="w-6 h-6" />
           <span className="font-bold">{label}</span>
-          <span className="absolute -top-2 -right-2 bg-foreground text-background text-xs px-2 py-1 rounded-full font-bold">
+          <span className="absolute -top-2 -right-2 bg-foreground text-background text-xs px-2 py-1 rounded-full font-bold dark:bg-background dark:text-foreground">
             {moodCounts[type]}
           </span>
         </Button>

@@ -28,27 +28,51 @@ export default {
         mood: {
           happy: {
             bg: "#F97316",
-            text: "#000000"
+            text: "#000000",
+            dark: {
+              bg: "#C2590F",
+              text: "#FFFFFF"
+            }
           },
           calm: {
             bg: "#D3E4FD",
-            text: "#000000"
+            text: "#000000",
+            dark: {
+              bg: "#2563EB",
+              text: "#FFFFFF"
+            }
           },
           energetic: {
             bg: "#8B5CF6",
-            text: "#FFFFFF"
+            text: "#FFFFFF",
+            dark: {
+              bg: "#6D28D9",
+              text: "#FFFFFF"
+            }
           },
           reflective: {
             bg: "#7E69AB",
-            text: "#FFFFFF"
+            text: "#FFFFFF",
+            dark: {
+              bg: "#5B4B7A",
+              text: "#FFFFFF"
+            }
           },
           sad: {
             bg: "#1A1F2C",
-            text: "#FFFFFF"
+            text: "#FFFFFF",
+            dark: {
+              bg: "#0F1219",
+              text: "#FFFFFF"
+            }
           },
           stressed: {
             bg: "#D946EF",
-            text: "#FFFFFF"
+            text: "#FFFFFF",
+            dark: {
+              bg: "#A21CAF",
+              text: "#FFFFFF"
+            }
           }
         },
         border: "hsl(var(--border))",
