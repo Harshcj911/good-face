@@ -9,7 +9,6 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
-  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
@@ -30,11 +29,11 @@ serve(async (req) => {
       body: JSON.stringify({
         contents: [{
           parts: [{
-            text: `Generate an inspiring quote about feeling ${mood}. Return it in JSON format with quote and author fields. Make it unique and meaningful. The response should be in valid JSON format like this: {"quote": "Your quote here", "author": "Author Name"}`,
+            text: `Generate a unique, meaningful, and inspiring quote that reflects the feeling of being ${mood}. The quote should be different each time and specifically tailored to this emotion. Return it in JSON format like this: {"quote": "Your quote here", "author": "Author Name"}. Make sure the quote is not generic and truly captures the essence of feeling ${mood}.`,
           }]
         }],
         generationConfig: {
-          temperature: 0.7,
+          temperature: 0.9,
           topK: 40,
           topP: 0.95,
           maxOutputTokens: 200,
@@ -52,36 +51,58 @@ serve(async (req) => {
     console.log('Gemini response:', data);
 
     try {
-      // Extract the text content from Gemini's response
       const textContent = data.candidates[0].content.parts[0].text;
-      // Parse the JSON string from the text content
       const parsedContent = JSON.parse(textContent);
+      
+      // Validate the response
+      if (!parsedContent.quote || !parsedContent.author || 
+          parsedContent.quote === "Life is full of surprises and opportunities." ||
+          parsedContent.author === "Anonymous") {
+        throw new Error('Invalid quote generated');
+      }
       
       return new Response(JSON.stringify(parsedContent), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     } catch (parseError) {
       console.error('Error parsing Gemini response:', parseError);
-      return new Response(
-        JSON.stringify({
-          quote: "Life is full of surprises and opportunities.",
-          author: "Anonymous"
-        }), 
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      throw new Error('Failed to parse quote');
     }
   } catch (error) {
     console.error('Error in generate-quote function:', error);
-    return new Response(
-      JSON.stringify({ 
-        error: error.message,
-        quote: "Life is full of surprises and opportunities.",
-        author: "Anonymous"
-      }), 
-      {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    // Generate a fallback quote based on mood instead of using the same generic quote
+    const fallbackQuotes = {
+      happy: {
+        quote: "Joy is the simplest form of gratitude.",
+        author: "Karl Barth"
+      },
+      energetic: {
+        quote: "Energy and persistence conquer all things.",
+        author: "Benjamin Franklin"
+      },
+      calm: {
+        quote: "Peace comes from within. Do not seek it without.",
+        author: "Buddha"
+      },
+      reflective: {
+        quote: "Life can only be understood backwards; but it must be lived forwards.",
+        author: "Søren Kierkegaard"
+      },
+      sad: {
+        quote: "Even the darkest night will end and the sun will rise.",
+        author: "Victor Hugo"
+      },
+      stressed: {
+        quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+        author: "Nelson Mandela"
       }
-    );
+    };
+    
+    const mood = req.json().then(data => data.mood).catch(() => 'happy');
+    const fallbackQuote = fallbackQuotes[await mood] || fallbackQuotes.happy;
+    
+    return new Response(JSON.stringify(fallbackQuote), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });

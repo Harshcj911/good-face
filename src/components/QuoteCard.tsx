@@ -9,11 +9,13 @@ interface QuoteCardProps {
 
 const QuoteCard = ({ quote, author, className }: QuoteCardProps) => {
   return (
-    <Card className={cn(
-      "w-full max-w-lg bg-background neo-brutal",
-      "animate-fade-in transition-all duration-300",
-      className
-    )}>
+    <Card 
+      className={cn(
+        "w-full max-w-lg bg-background/80 backdrop-blur-sm neo-brutal",
+        "animate-fade-in transition-all duration-500",
+        className
+      )}
+    >
       <CardContent className="pt-6">
         <blockquote className="space-y-2">
           <p className="text-lg font-bold leading-relaxed text-foreground">{quote}</p>

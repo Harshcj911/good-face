@@ -63,44 +63,43 @@
 
 @layer components {
   .mood-gradient {
-    @apply transition-colors duration-300;
+    @apply transition-all duration-500;
     will-change: background-color;
   }
 
   .mood-happy {
     @apply bg-mood-happy-bg text-mood-happy-text font-bold dark:bg-mood-happy-dark-bg dark:text-mood-happy-dark-text;
-    box-shadow: 5px 5px 0px #000000;
+    box-shadow: 5px 5px 0px theme('colors.black');
   }
 
   .mood-calm {
     @apply bg-mood-calm-bg text-mood-calm-text font-bold dark:bg-mood-calm-dark-bg dark:text-mood-calm-dark-text;
-    box-shadow: 5px 5px 0px #000000;
+    box-shadow: 5px 5px 0px theme('colors.black');
   }
 
   .mood-energetic {
     @apply bg-mood-energetic-bg text-mood-energetic-text font-bold dark:bg-mood-energetic-dark-bg dark:text-mood-energetic-dark-text;
-    box-shadow: 5px 5px 0px #000000;
+    box-shadow: 5px 5px 0px theme('colors.black');
   }
 
   .mood-reflective {
     @apply bg-mood-reflective-bg text-mood-reflective-text font-bold dark:bg-mood-reflective-dark-bg dark:text-mood-reflective-dark-text;
-    box-shadow: 5px 5px 0px #000000;
+    box-shadow: 5px 5px 0px theme('colors.black');
   }
 
   .mood-sad {
     @apply bg-mood-sad-bg text-mood-sad-text font-bold dark:bg-mood-sad-dark-bg dark:text-mood-sad-dark-text;
-    box-shadow: 5px 5px 0px #000000;
+    box-shadow: 5px 5px 0px theme('colors.black');
   }
 
   .mood-stressed {
     @apply bg-mood-stressed-bg text-mood-stressed-text font-bold dark:bg-mood-stressed-dark-bg dark:text-mood-stressed-dark-text;
-    box-shadow: 5px 5px 0px #000000;
+    box-shadow: 5px 5px 0px theme('colors.black');
   }
 
   .neo-brutal {
-    @apply border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold dark:border-white/80;
+    @apply border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold dark:border-white/80 transition-all duration-300;
     transform: translate(0, 0);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .neo-brutal:hover {
@@ -112,4 +111,19 @@
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
   }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
 }
