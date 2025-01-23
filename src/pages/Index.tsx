@@ -64,8 +64,8 @@ const Index = () => {
   };
 
   return (
-    <main className="min-h-screen transition-colors duration-300">
-      <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12 backdrop-blur-sm">
+    <main className="min-h-screen transition-all duration-500">
+      <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12 backdrop-blur-sm bg-background/30 dark:bg-background/10 rounded-lg shadow-xl">
         <div className="w-full flex justify-end mb-4">
           <ThemeToggle />
         </div>
