@@ -13,14 +13,14 @@ const QuoteCard = ({ quote, author, className }: QuoteCardProps) => {
       className={cn(
         "w-full max-w-lg backdrop-blur-sm neo-brutal",
         "animate-fade-in transition-all duration-500",
-        "bg-opacity-20 dark:bg-opacity-10",
+        "bg-background/40 dark:bg-background/20",
         className
       )}
     >
       <CardContent className="pt-6">
         <blockquote className="space-y-2">
-          <p className="text-lg font-bold leading-relaxed text-foreground">{quote}</p>
-          <footer className="text-sm font-bold text-muted-foreground">— {author}</footer>
+          <p className="text-lg font-bold leading-relaxed text-foreground font-inter">{quote}</p>
+          <footer className="text-sm font-bold text-muted-foreground font-inter">— {author}</footer>
         </blockquote>
       </CardContent>
     </Card>

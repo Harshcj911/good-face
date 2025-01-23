@@ -64,30 +64,32 @@ const Index = () => {
   };
 
   return (
-    <main className="min-h-screen transition-all duration-500">
-      <div className="container mx-auto px-4 py-16 flex flex-col items-center gap-12 backdrop-blur-sm bg-background/30 dark:bg-background/10 rounded-lg shadow-xl">
+    <main className="min-h-screen flex items-center justify-center p-4">
+      <div className="container max-w-6xl mx-auto backdrop-blur-sm bg-background/30 dark:bg-background/10 rounded-2xl shadow-xl p-8">
         <div className="w-full flex justify-end mb-4">
           <ThemeToggle />
         </div>
         
-        <DateDisplay clickCount={Object.values(moodCounts).reduce((a, b) => a + b, 0)} />
-        
-        <h1 className="text-4xl md:text-5xl font-bold text-center text-foreground transition-colors duration-300">
-          How are you feeling today?
-        </h1>
-        
-        <MoodSelector 
-          onMoodSelect={handleMoodSelect} 
-          selectedMood={selectedMood} 
-          moodCounts={moodCounts}
-          isLoading={isLoading}
-        />
-        
-        {quote && (
-          <div className="w-full flex justify-center">
-            <QuoteCard quote={quote.quote} author={quote.author} />
-          </div>
-        )}
+        <div className="max-w-4xl mx-auto space-y-12">
+          <DateDisplay clickCount={Object.values(moodCounts).reduce((a, b) => a + b, 0)} />
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-center text-foreground transition-colors duration-300">
+            How are you feeling today?
+          </h1>
+          
+          <MoodSelector 
+            onMoodSelect={handleMoodSelect} 
+            selectedMood={selectedMood} 
+            moodCounts={moodCounts}
+            isLoading={isLoading}
+          />
+          
+          {quote && (
+            <div className="w-full flex justify-center">
+              <QuoteCard quote={quote.quote} author={quote.author} />
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );

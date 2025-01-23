@@ -8,8 +8,8 @@ const DateDisplay = ({ clickCount }: DateDisplayProps) => {
   const today = new Date();
   
   return (
-    <div className="text-center mb-8 space-y-2 bg-white neo-brutal p-6">
-      <h2 className="text-2xl font-bold">
+    <div className="text-center space-y-2 bg-background/40 dark:bg-background/20 neo-brutal p-6 rounded-xl">
+      <h2 className="text-2xl font-bold font-inter">
         {format(today, "EEEE, MMMM do, yyyy")}
       </h2>
       <p className="text-muted-foreground font-medium">
