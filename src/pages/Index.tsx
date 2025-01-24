@@ -64,13 +64,18 @@ const Index = () => {
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4 bg-white">
-      <div className="container max-w-6xl mx-auto bg-white rounded-2xl shadow-xl p-8">
+      <div className="container max-w-6xl mx-auto bg-white rounded-2xl p-8">
         <div className="max-w-4xl mx-auto space-y-12">
           <DateDisplay clickCount={Object.values(moodCounts).reduce((a, b) => a + b, 0)} />
           
-          <h1 className="text-4xl md:text-5xl font-bold text-center text-foreground">
-            How are you feeling today?
-          </h1>
+          <div className="space-y-6 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+              How are you feeling today?
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              Select your mood and receive a personalized quote
+            </p>
+          </div>
           
           <MoodSelector 
             onMoodSelect={handleMoodSelect} 
@@ -80,7 +85,7 @@ const Index = () => {
           />
           
           {quote && (
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center animate-fadeIn">
               <QuoteCard quote={quote.quote} author={quote.author} />
             </div>
           )}

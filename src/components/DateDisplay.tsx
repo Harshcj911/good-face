@@ -8,11 +8,11 @@ const DateDisplay = ({ clickCount }: DateDisplayProps) => {
   const today = new Date();
   
   return (
-    <div className="text-center space-y-2 bg-background/40 dark:bg-background/20 neo-brutal p-6 rounded-xl">
-      <h2 className="text-2xl font-bold font-inter">
+    <div className="text-center space-y-3 bg-white p-6 rounded-xl border border-gray-200">
+      <h2 className="text-2xl font-semibold tracking-tight">
         {format(today, "EEEE, MMMM do, yyyy")}
       </h2>
-      <p className="text-muted-foreground font-medium">
+      <p className="text-muted-foreground">
         {clickCount} people have shared their mood today
       </p>
     </div>

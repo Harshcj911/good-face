@@ -11,16 +11,19 @@ const QuoteCard = ({ quote, author, className }: QuoteCardProps) => {
   return (
     <Card 
       className={cn(
-        "w-full max-w-lg backdrop-blur-sm neo-brutal",
-        "animate-fade-in transition-all duration-500",
-        "bg-background/40 dark:bg-background/20",
+        "w-full max-w-lg bg-white border border-gray-200",
+        "transition-all duration-500 hover:shadow-lg",
         className
       )}
     >
-      <CardContent className="pt-6">
-        <blockquote className="space-y-2">
-          <p className="text-lg font-bold leading-relaxed text-foreground font-inter">{quote}</p>
-          <footer className="text-sm font-bold text-muted-foreground font-inter">— {author}</footer>
+      <CardContent className="p-8">
+        <blockquote className="space-y-3">
+          <p className="text-xl font-medium leading-relaxed text-foreground">
+            "{quote}"
+          </p>
+          <footer className="text-sm text-muted-foreground font-medium">
+            — {author}
+          </footer>
         </blockquote>
       </CardContent>
     </Card>
